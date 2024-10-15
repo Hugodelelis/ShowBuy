@@ -28,4 +28,6 @@ options = signal<IOption[]>([
     this.selectedOption = option;
     this.dropdownOpen = false;
   }
+
+  
 }
