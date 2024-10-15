@@ -13,13 +13,17 @@
             align-items: center;
             gap: 4em;
             
-            .content-imgs, .content-description {
+            .content-imgs-mobile {
+                display: none;
+            }
+
+            .content-imgs-desktop, .content-description {
                 flex: 50%;
                 flex-wrap: wrap;
                 height: 100%;
             }
 
-            .content-imgs {
+            .content-imgs-desktop {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -104,8 +108,17 @@
         @media(max-width: 1200px) {
             .content-container{
                 flex-direction: column;
-                margin: 1em 0 5em;
-                
+                margin: 0em 0 5em;
+                gap: 2em;
+
+                .content-imgs-mobile {
+                    display: inherit;
+                }
+
+                .content-imgs-desktop {
+                    display: none;
+                }
+
                 .content-description  {
                     align-items: center;
                     justify-content: center;
