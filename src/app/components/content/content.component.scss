@@ -43,7 +43,6 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
-                padding-right: 3em;
                 gap: 1em;
 
                 h2 {
@@ -53,11 +52,12 @@
 
                 h1 {
                     font-size: 2.5em;
+                    width: 50%;
                 }
 
                 p {
+                    width: 70%;
                     color: var(--grey-010);
-                    margin: 0.5em 0em;
                 }
 
                 .price {
