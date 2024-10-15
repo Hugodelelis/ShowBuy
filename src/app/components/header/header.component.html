@@ -1,6 +1,21 @@
 <header class="width-container">
     <img src="assets/logo/logo.svg" alt="sneakers logo">
     <nav>
+
+      <div class="custom-select" [class.active]="dropdownOpen">
+        <div class="select-trigger" (click)="toggleDropdown()">
+          <span>{{ selectedOption?.label || 'Lenguage' }}</span>
+          <img src="assets/icons/arrow.svg" alt="Seta" />
+        </div>
+        <div class="options">
+          @for(option of options(); track option) {
+            <div class="option" (click)="selectOption(option)">
+              <img [src]="option.image" [alt]="option.label" />
+              <span>{{ option.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
         <button class="btn-car"><img src="assets/icons/icon-cart.svg" alt="car"></button>
     </nav>
 </header>
