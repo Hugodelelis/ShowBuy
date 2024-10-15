@@ -7,3 +7,10 @@
     width: 6em;
     border-radius: 0.5em;
 }
+
+@media(max-width: 768px) { 
+    .main-img {
+        width: 90%;
+        border-radius: 0em;
+    }
+}

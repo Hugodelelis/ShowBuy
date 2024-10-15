@@ -113,6 +113,9 @@
 
                 .content-imgs-mobile {
                     display: inherit;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 .content-imgs-desktop {
