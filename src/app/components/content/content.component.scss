@@ -43,6 +43,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
+                padding-right: 3em;
                 gap: 1em;
 
                 h2 {
@@ -140,6 +141,15 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    width: 100%;
+
+                    swiper-container {
+                        width: 100%;
+
+                        swiper-slide {
+                            width: auto;
+                        }
+                    }
                 }
             }
         }
