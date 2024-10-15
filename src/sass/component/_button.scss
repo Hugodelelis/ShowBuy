@@ -31,13 +31,18 @@
 }
 
 .btn-secondary {
-    background-color: var(white-010);
+    background-color: var(--white-010);
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     padding: 1em;
     cursor: pointer;
+    transition: 0.4s ease;
+
+    &:hover {
+        background-color: var(--black-010);
+    }
 }
 
 
