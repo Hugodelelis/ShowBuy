@@ -10,13 +10,14 @@ import IOption from '../../interface/selectLeng.interface';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  dropdownOpen = false;
+  // dropdown logic
+  dropdownOpen: boolean = false;
 
-options = signal<IOption[]>([
-    { value: 'pt-br', label: 'PT-BR', image: 'assets/icons/brazil.png' },
-    { value: 'en', label: 'EN', image: 'assets/icons/spain.png' },
-    { value: 'esp', label: 'ESP', image: 'assets/icons/USA.png' },
-]);
+  options = signal<IOption[]>([
+      { value: 'pt-br', label: 'PT-BR', image: 'assets/icons/brazil.png' },
+      { value: 'en', label: 'EN', image: 'assets/icons/spain.png' },
+      { value: 'esp', label: 'ESP', image: 'assets/icons/USA.png' },
+  ]);
 
   selectedOption: any = null;
 
@@ -29,5 +30,14 @@ options = signal<IOption[]>([
     this.dropdownOpen = false;
   }
 
-  
+  // modal logic
+  modalOpen!: boolean
+
+  showModal(): boolean {
+      return this.modalOpen = true
+  }
+
+  closeModal():boolean {
+    return this.modalOpen = false
+  }
 }

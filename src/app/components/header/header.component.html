@@ -16,12 +16,15 @@
           }
         </div>
       </div>
-        <button class="btn-car"><img src="assets/icons/icon-cart.svg" alt="car"></button>
+        <button class="btn" (click)="showModal()"><img src="assets/icons/icon-cart.svg" alt="car"></button>
     </nav>
 
-    <div class="modal">
-      <div class="modal-header">
-        <h3>Cart</h3>
+    @if(modalOpen === true) {
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Cart</h3>
+          <button (click)="closeModal()" class="btn"><img src="assets/icons/close.svg" alt="close"></button>
+        </div>
       </div>
-    </div>
+    }
 </header>
