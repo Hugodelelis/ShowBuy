@@ -137,5 +137,11 @@
                 }
             }
         }
+
+        @media (max-width: 576px) {
+            .content-container{
+                margin: 0em 0 1em;
+            }
+        }
     }
 }
