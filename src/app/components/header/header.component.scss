@@ -1,0 +1,20 @@
+:host {
+    header {
+        border-bottom: 1px solid var(--grey-020);
+        padding: 1.5em 0.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5em;
+            background-color: white;
+            box-shadow: none;
+            width: auto;
+            height: auto;
+        }
+    }
+}
