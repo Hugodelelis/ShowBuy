@@ -1,8 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA ,Component, signal } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA ,Component, computed, inject, signal } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import IImage from '../../interface/thumbImg.interface';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { ProductAddService } from '../../service/product-add.service';
+import ICartItem from '../../interface/carItem.interface';
 register();
 
 @Component({
@@ -30,17 +32,23 @@ export class ContentComponent {
   }
 
   // counter
-  count = signal<number>(1)
+  #cartService = inject(ProductAddService)
+
+  getCount() {
+    return this.#cartService.count()
+  }
 
   increment() {
-    this.count.update(value => value + 1);
+    this.#cartService.increment();
   }
 
   decrement() {
-    if(this.count() === 1) {
-      return this.count
-    }
+    this.#cartService.decrement();
+  }
 
-    return this.count.update(value => value - 1);
+  //add product
+
+  getAddProductToCart() {
+    this.#cartService.addProductToCart(this.#cartService.products());
   }
 }

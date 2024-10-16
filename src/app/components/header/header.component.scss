@@ -15,6 +15,19 @@
             box-shadow: none;
             width: auto;
             height: auto;
+
+            .cart {
+                position: relative;
+            }
+
+            .alert-item {
+                background-color: var(--orange-010);
+                position: absolute;
+                border-radius: 50%;
+                width: 1em;
+                top: 0.1em;
+                right: 0.02em;
+            }
         }
     }
 }
