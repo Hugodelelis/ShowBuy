@@ -7,6 +7,7 @@
     width: 6em;
     border-radius: 0.5em;
     cursor: pointer;
+    transition: 0.4s ease all;
 
     &:hover {
         opacity: 0.6;
