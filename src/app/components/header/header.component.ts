@@ -15,8 +15,8 @@ export class HeaderComponent {
 
   options = signal<IOption[]>([
       { value: 'pt-br', label: 'PT-BR', image: 'assets/icons/brazil.png' },
-      { value: 'en', label: 'EN', image: 'assets/icons/spain.png' },
-      { value: 'esp', label: 'ESP', image: 'assets/icons/USA.png' },
+      { value: 'en', label: 'EN', image: 'assets/icons/USA.png' },
+      { value: 'esp', label: 'ESP', image: 'assets/icons/spain.png' },
   ]);
 
   selectedOption: any = null;
