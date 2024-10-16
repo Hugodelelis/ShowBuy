@@ -14,9 +14,9 @@ export class HeaderComponent {
   dropdownOpen: boolean = false;
 
   options = signal<IOption[]>([
-      { value: 'pt-br', label: 'PT-BR', image: 'assets/icons/brazil.png' },
-      { value: 'en', label: 'EN', image: 'assets/icons/USA.png' },
-      { value: 'esp', label: 'ESP', image: 'assets/icons/spain.png' },
+      { value: 'pt-br', label: 'PT-BR', image: 'assets/icons/brazil.svg' },
+      { value: 'en', label: 'EN', image: 'assets/icons/usa.svg' },
+      { value: 'esp', label: 'ESP', image: 'assets/icons/spain.svg' },
   ]);
 
   selectedOption: any = null;
