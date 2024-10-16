@@ -6,6 +6,21 @@
 .secondary-imgs {
     width: 6em;
     border-radius: 0.5em;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.border-img-active {
+    border: 0.25em solid var(--orange-010);
+    height: 6.5em;
+    border-radius: 0.8em;
+}
+
+.img-active {
+    opacity: 0.6;
 }
 
 @media(max-width: 576px) { 

@@ -3,21 +3,29 @@
 
 
         <div class="content-imgs-desktop">
-            <img src="assets/imgs/image-product-1.jpg" alt="" class="main-img">
+
+            <img [src]="mainImage" alt="Imagem principal" class="main-img">
+            
             <div class="content-thumb-imgs">
-                <img src="assets/imgs/image-product-1-thumbnail.jpg" alt="" class="secondary-imgs">
-                <img src="assets/imgs/image-product-2-thumbnail.jpg" alt="" class="secondary-imgs">
-                <img src="assets/imgs/image-product-3-thumbnail.jpg" alt="" class="secondary-imgs">
-                <img src="assets/imgs/image-product-4-thumbnail.jpg" alt="" class="secondary-imgs">
+                @for(img of images(); track img) {
+                    <div [class.border-img-active]="mainImage === img.mainSrc">
+                            <img 
+                                [src]="img.thumbnailSrc" 
+                                [alt]="img.altText" 
+                                class="secondary-imgs" 
+                                (click)="changeImage(img.mainSrc)" 
+                                [class.img-active]="mainImage === img.mainSrc"
+                            >
+                    </div>
+                }
             </div>
         </div>
 
         <div class="content-imgs-mobile">
             <swiper-container speed="500" loop="true" pagination="true">
-                <swiper-slide><img src="assets/imgs/image-product-1.jpg" alt="" class="main-img"></swiper-slide>
-                <swiper-slide><img src="assets/imgs/image-product-2.jpg" alt="" class="main-img"></swiper-slide>
-                <swiper-slide><img src="assets/imgs/image-product-3.jpg" alt="" class="main-img"></swiper-slide>
-                <swiper-slide><img src="assets/imgs/image-product-4.jpg" alt="" class="main-img"></swiper-slide>
+                @for(img of images(); track img) {
+                    <swiper-slide><img [src]="img.mainSrc" alt="img.altText" class="main-img"></swiper-slide>
+                }
             </swiper-container>
         </div>
 
