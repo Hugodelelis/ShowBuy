@@ -1,33 +1,35 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import IOption from '../../interface/selectLeng.interface';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  #translate = inject(TranslateService)
+
   // dropdown logic
   dropdownOpen: boolean = false;
 
   options = signal<IOption[]>([
-      { value: 'pt-br', label: 'PT-BR', image: 'assets/icons/brazil.svg' },
-      { value: 'en', label: 'EN', image: 'assets/icons/usa.svg' },
-      { value: 'esp', label: 'ESP', image: 'assets/icons/spain.svg' },
+      { value: 'pt-br', label: 'pt-br', image: 'assets/icons/brazil.svg' },
+      { value: 'en', label: 'en', image: 'assets/icons/usa.svg' },
+      { value: 'esp', label: 'esp', image: 'assets/icons/spain.svg' },
   ]);
-
-  selectedOption: any = null;
 
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
   selectOption(option: any) {
-    this.selectedOption = option;
     this.dropdownOpen = false;
+    return this.#translate.setDefaultLang(option);
   }
 
   // modal logic

@@ -1,0 +1,15 @@
+{
+    "pages": {
+
+        "header": {
+            "lang": "esp",
+            "cart": "carro"
+        },
+
+        "content": {
+            "h1": "Zapatos Limitados",
+            "desc": "Esta zapatillas minimalista son tu compañera perfecta para la ropa casual. Con una suela exterior de goma duradera. resistirán todo lo que el clima pueda ofrecer.",
+            "btnAdd": "cesta"
+        }
+    }
+}

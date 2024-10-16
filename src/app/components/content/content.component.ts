@@ -1,12 +1,14 @@
 import { CUSTOM_ELEMENTS_SCHEMA ,Component, signal } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import IImage from '../../interface/thumbImg.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
 register();
 
 @Component({
   selector: 'app-content',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,0 +1,15 @@
+{
+    "pages": {
+
+        "header": {
+            "lang": "pt-br",
+            "cart": "carrinho"
+        },
+
+        "content": {
+            "h1": "Calçados limitados",
+            "desc": "Este tênis minimalista são o companheiro perfeito para uso casual. Uma sola externa de borracha durável. eles resistirão a tudo que o clima tem a oferecer.",
+            "btnAdd": "carrinho"
+        }
+    }
+}

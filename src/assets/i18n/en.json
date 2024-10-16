@@ -1,0 +1,15 @@
+{
+    "pages": {
+
+        "header": {
+            "lang": "en",
+            "cart": "cart"
+        },
+
+        "content": {
+            "h1": "Fall Limite Sneakers",
+            "desc": "These low-profile sneakers are your perfect casual wear companion. Faturing a durable rubber outer sole. they'll withstand everything the weather can offer.",
+            "btnAdd": "cart"
+        }
+    }
+}

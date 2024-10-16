@@ -1,11 +1,7 @@
 <main class="width-container"> 
     <div class="content-container width-container">
-
-
         <div class="content-imgs-desktop">
-
             <img [src]="mainImage" alt="Imagem principal" class="main-img">
-            
             <div class="content-thumb-imgs">
                 @for(img of images(); track img) {
                     <div [class.border-img-active]="mainImage === img.mainSrc">
@@ -31,11 +27,9 @@
 
         <div class="content-description">
             <h2>SNEAKER COMPANY</h2>
-            <h1>Fall Limite Sneakers</h1>
+            <h1>{{ 'pages.content.h1' | translate }}</h1>
             <p>
-                These low-profile sneakers are your perfect casual wear
-                companion. Faturing a durable rubber outer sole. they'll
-                withstand everything the weather can offer.
+                {{ 'pages.content.desc' | translate }}
             </p>
 
             <div class="price">
@@ -52,7 +46,7 @@
                     <div class="cont"> {{count()}} </div>
                     <button class="btn-secondary"><img src="assets/icons/icon-minus.svg" alt="decrement" (click)="decrement()"></button>
                 </div>
-                <button class="btn-primary"><img src="assets/icons/icon-cart.svg" alt="car"> Add to cart</button>
+                <button class="btn-primary"><img src="assets/icons/icon-cart.svg" alt="car">{{ 'pages.content.btnAdd' | translate }}</button>
             </div>
         </div>
     </div>
