@@ -12,6 +12,8 @@ register();
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ContentComponent {
+
+  // imgs
   mainImage: string = 'assets/imgs/image-product-1.jpg';
 
   images = signal<IImage[]>([
@@ -23,5 +25,20 @@ export class ContentComponent {
 
   changeImage(newSrc: string) {
     this.mainImage = newSrc;
+  }
+
+  // counter
+  count = signal<number>(1)
+
+  increment() {
+    this.count.update(value => value + 1);
+  }
+
+  decrement() {
+    if(this.count() === 1) {
+      return this.count
+    }
+
+    return this.count.update(value => value - 1);
   }
 }
