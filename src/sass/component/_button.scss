@@ -6,7 +6,7 @@
     transition: 0.4s ease all;
 
     &:hover {
-        transform: rotate(12deg);
+        background-color: var(--gray-020);
     }
 }
 
