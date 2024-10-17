@@ -15,7 +15,8 @@
         "modal": {
             "empty": "Carrinho vazio",
             "product": "Calçados limitados",
-            "btn": "confirmar"
+            "btn": "confirmar",
+            "sucess": "Sucesso"
         }
     }
 }

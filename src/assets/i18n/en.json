@@ -15,7 +15,8 @@
         "modal": {
             "empty": "Cart empty",
             "product": "limited shoes",
-            "btn": "confirm"
+            "btn": "confirm",
+            "sucess": "success"
         }
     }
 }

@@ -15,7 +15,8 @@
         "modal": {
             "empty": "Cesta vacia",
             "product": "Zapatos Limitados",
-            "btn": "confirmar"
+            "btn": "confirmar",
+            "sucess": "éxito"
         }
     }
 }

@@ -59,10 +59,12 @@ export class HeaderComponent {
     return this.#cartService.productsCart();
   }
 
-  sucess() {
-    Swal.fire({
-      title: "Good job!",
-      icon: "success"
+  success() {
+    this.#translate.get('pages.modal.sucess').subscribe((translatedText: string) => {
+      Swal.fire({
+        title: translatedText,
+        icon: 'success',
+      });
     });
   }
   
