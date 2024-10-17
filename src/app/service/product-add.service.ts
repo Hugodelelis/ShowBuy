@@ -6,7 +6,6 @@ import ICartItem from '../interface/carItem.interface';
   providedIn: 'root'
 })
 export class ProductAddService {
-
   // increment count item
   count = signal<number>(1)
 
@@ -17,11 +16,11 @@ export class ProductAddService {
 
   decrement() {
     if(this.count() === 1) {
-      this.count
+      return this.count
     }
 
-    this.count.update(value => value - 1);
     this.updateProductPriceAndQuantity();
+    return this.count.update(value => value - 1);
   }
 
 
@@ -29,7 +28,7 @@ export class ProductAddService {
   products = signal<ICartItem[]>([
     {
       id: 1,
-      name: 'shoes',
+      name: 'limited shoes',
       img: 'assets/imgs/image-product-1-thumbnail.jpg',
       price: this.count() * 125,
       quantity: this.count() 
@@ -46,25 +45,29 @@ export class ProductAddService {
     this.products.set(updatedProducts);
   }
 
+  productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
 
   addProductToCart(product: any) {
-    let productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
   
-    const existingProductIndex = productsCart.findIndex((item: any) => item.id === product.id);
+    const existingProductIndex = this.productsCart.findIndex((item: any) => item.id === product.id);
 
     if(existingProductIndex) {
-      productsCart.push(product);
+      this.productsCart.push(product());
     }
 
-    localStorage.setItem('ProductsCart', JSON.stringify(productsCart));
+    localStorage.setItem('ProductsCart', JSON.stringify(this.productsCart));
   }
 
   getCartValueAllItems() {
-    let productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
-    return productsCart.length
+    return this.productsCart.length
   }
 
-  getCarItems() {
-    let productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
+  deleteItem(index: any) {
+
+    if (index > -1 && index < this.productsCart.length) {
+      this.productsCart.splice(index, 1);
+    } 
+
+    localStorage.setItem('ProductsCart', JSON.stringify(this.productsCart));
   }
 }

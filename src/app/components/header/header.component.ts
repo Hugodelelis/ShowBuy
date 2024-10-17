@@ -4,6 +4,7 @@ import IOption from '../../interface/selectLeng.interface';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import CartItem from '../../interface/carItem.interface';
 import { ProductAddService } from '../../service/product-add.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -47,5 +48,18 @@ export class HeaderComponent {
 
   getValueCart() {
     return this.#cartService. getCartValueAllItems()
+  }
+
+  getItems = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
+
+  getDeleteItem(index: any) {
+    return this.#cartService.deleteItem(index)
+  }
+
+  sucess() {
+    Swal.fire({
+      title: "Good job!",
+      icon: "success"
+    });
   }
 }

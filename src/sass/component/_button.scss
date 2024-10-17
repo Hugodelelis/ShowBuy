@@ -50,6 +50,20 @@
     }
 }
 
+.btn-delete {
+    padding: 1em;
+    height: 1em;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-width {
+    width: 100% !important;
+    position: relative;
+    top: 2em;
+}
+
 @media(max-width: 996px) {
     .btn-primary{
         width: 10em;

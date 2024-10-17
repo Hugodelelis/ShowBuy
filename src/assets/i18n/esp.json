@@ -8,8 +8,14 @@
 
         "content": {
             "h1": "Zapatos Limitados",
-            "desc": "Esta zapatillas minimalista son tu compañera perfecta para la ropa casual. Con una suela exterior de goma duradera. resistirán todo lo que el clima pueda ofrecer.",
+            "desc": "Esta zapatillas minimalista es tu compañera perfecta para la ropa casual. Con una suela exterior de goma duradera. resistirán todo lo que el clima pueda ofrecer.",
             "btnAdd": "cesta"
+        },
+
+        "modal": {
+            "empty": "Cesta vacia",
+            "product": "Zapatos Limitados",
+            "btn": "confirmar"
         }
     }
 }
