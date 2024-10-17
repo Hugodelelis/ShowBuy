@@ -33,22 +33,22 @@
           <div class="modal-empty">
             <span>{{ 'pages.modal.empty' | translate}}</span>
           </div>
-        } @else {
+        } @if(getValueCart() >= 1) {
           <div class="modal-body">
-            @for(item of getItems; track item; let i = $index) {
+            @for(item of getItems(); track item; let i = $index) {
               <div class="product-container-cart">
-                <img [src]="item[$index].img" [alt]="$index" class="thumb-modal-img">
+                <img [src]="item[i].img" [alt]="$index" class="thumb-modal-img">
                 <div class="product-infos">
-                  <span class="name-product">{{ item[$index].name }}</span>
+                  <span class="name-product">{{ item[i].name }}</span>
                   <div class="price">
-                    <span>{{ item[$index].quantity }}x</span>
-                    <span class="price-product">${{ item[$index].price }}.00</span>
+                    <span>{{ item[i].quantity }}x</span>
+                    <span class="price-product">${{ item[i].price }}.00</span>
                   </div>
                 </div>
-                <button class="btn-delete" (click)="getDeleteItem($index)"><img src="assets/icons/icon-delete.svg" alt="button delete"></button>
+                <button class="btn-delete" (click)="getDeleteItem(i)"><img src="assets/icons/icon-delete.svg" alt="button delete"></button>
               </div>
+              <button class="btn-primary btn-width" (click)="sucess()">{{ 'pages.modal.btn' | translate}}</button>
             }
-            <button class="btn-primary btn-width" (click)="sucess()">{{ 'pages.modal.btn' | translate}}</button>
           </div>
         }
       </div>

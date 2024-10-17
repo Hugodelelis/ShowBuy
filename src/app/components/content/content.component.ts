@@ -49,6 +49,6 @@ export class ContentComponent {
   //add product
 
   getAddProductToCart() {
-    this.#cartService.addProductToCart(this.#cartService.products);
+    this.#cartService.addProductToCart(this.#cartService.products());
   }
 }

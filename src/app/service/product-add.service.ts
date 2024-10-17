@@ -23,6 +23,16 @@ export class ProductAddService {
     return this.count.update(value => value - 1);
   }
 
+  private updateProductPriceAndQuantity() {
+    const updatedProducts = this.products().map(product => ({
+      ...product,
+      price: this.count() * 125,
+      quantity: this.count() 
+    }));
+
+    this.products.set(updatedProducts);
+  }
+
 
   // add item logic
   products = signal<ICartItem[]>([
@@ -35,39 +45,38 @@ export class ProductAddService {
     }
   ]);
 
-  private updateProductPriceAndQuantity() {
-    const updatedProducts = this.products().map(product => ({
-      ...product,
-      price: this.count() * 125,
-      quantity: this.count() 
-    }));
-
-    this.products.set(updatedProducts);
+  productsCart = signal<ICartItem[]>(JSON.parse(localStorage.getItem('ProductsCart') || '[]'));
+  getItems = signal<any[]>([])
+  
+  loadCartItems() {
+    const storedCartItems = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
+    this.getItems.set(storedCartItems);
   }
-
-  productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
 
   addProductToCart(product: any) {
+    const productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
+    const existingProductIndex = productsCart.findIndex((item: any) => item.id === product.id);
   
-    const existingProductIndex = this.productsCart.findIndex((item: any) => item.id === product.id);
-
-    if(existingProductIndex) {
-      this.productsCart.push(product());
+    if (existingProductIndex) {
+      productsCart.push(product);
     }
-
-    localStorage.setItem('ProductsCart', JSON.stringify(this.productsCart));
-  }
-
-  getCartValueAllItems() {
-    return this.productsCart.length
+  
+    localStorage.setItem('ProductsCart', JSON.stringify(productsCart));
+    this.loadCartItems(); 
+    location.reload();
   }
 
   deleteItem(index: any) {
 
-    if (index > -1 && index < this.productsCart.length) {
-      this.productsCart.splice(index, 1);
+    if (index > -1 && index < this.productsCart().length) {
+      this.productsCart().splice(index, 1);
     } 
 
-    localStorage.setItem('ProductsCart', JSON.stringify(this.productsCart));
+    localStorage.setItem('ProductsCart', JSON.stringify(this.productsCart()));
+    this.loadCartItems();
+  }
+
+  getCartValueAllItems() {
+    return this.productsCart().length
   }
 }
