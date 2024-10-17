@@ -1,82 +1,46 @@
 import { computed, Injectable, signal } from '@angular/core';
-import CartItem from '../interface/carItem.interface';
 import ICartItem from '../interface/carItem.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductAddService {
-  // increment count item
-  count = signal<number>(1)
+  productsCart = signal<any>(this.loadCartFromLocalStorage());
 
-  increment() {
-    this.count.update(value => value + 1);
-    this.updateProductPriceAndQuantity();
+  loadCartFromLocalStorage(): ICartItem[] {
+    const storedCart = localStorage.getItem('productsCart');
+    return storedCart ? JSON.parse(storedCart) : [];
   }
 
-  decrement() {
-    if(this.count() === 1) {
-      return this.count
-    }
+  addProduct(product: ICartItem) {
+    this.productsCart.update(cart => {
+      const existingProduct = cart.find((item: any) => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity = product.quantity;
+      } else {
+        cart.push(product);
+      }
+      return cart;
+    });
 
-    this.updateProductPriceAndQuantity();
-    return this.count.update(value => value - 1);
+    this.updateLocalStorage();
   }
 
-  private updateProductPriceAndQuantity() {
-    const updatedProducts = this.products().map(product => ({
-      ...product,
-      price: this.count() * 125,
-      quantity: this.count() 
-    }));
+  deleteProduct(id: number) {
+    this.productsCart.update(cart => {
+      const updatedCart = cart.filter((product: any) => product.id !== id);
+      return updatedCart;
+    });
 
-    this.products.set(updatedProducts);
+    this.updateLocalStorage();
   }
 
-
-  // add item logic
-  products = signal<ICartItem[]>([
-    {
-      id: 1,
-      name: 'limited shoes',
-      img: 'assets/imgs/image-product-1-thumbnail.jpg',
-      price: this.count() * 125,
-      quantity: this.count() 
-    }
-  ]);
-
-  productsCart = signal<ICartItem[]>(JSON.parse(localStorage.getItem('ProductsCart') || '[]'));
-  getItems = signal<any[]>([])
-  
-  loadCartItems() {
-    const storedCartItems = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
-    this.getItems.set(storedCartItems);
+  countItems() {
+    return this.productsCart().length;
   }
 
-  addProductToCart(product: any) {
-    const productsCart = JSON.parse(localStorage.getItem('ProductsCart') || '[]');
-    const existingProductIndex = productsCart.findIndex((item: any) => item.id === product.id);
-  
-    if (existingProductIndex) {
-      productsCart.push(product);
-    }
-  
-    localStorage.setItem('ProductsCart', JSON.stringify(productsCart));
-    this.loadCartItems(); 
-    location.reload();
-  }
-
-  deleteItem(index: any) {
-
-    if (index > -1 && index < this.productsCart().length) {
-      this.productsCart().splice(index, 1);
-    } 
-
-    localStorage.setItem('ProductsCart', JSON.stringify(this.productsCart()));
-    this.loadCartItems();
-  }
-
-  getCartValueAllItems() {
-    return this.productsCart().length
+  private updateLocalStorage() {
+    localStorage.setItem('productsCart', JSON.stringify(this.productsCart()));
   }
 }
+

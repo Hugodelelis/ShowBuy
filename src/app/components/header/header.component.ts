@@ -47,14 +47,16 @@ export class HeaderComponent {
     return this.modalOpen = false
   }
 
-  getValueCart(): any {
-    return this.#cartService.getCartValueAllItems()
+  getCountItems() {
+    return this.#cartService.countItems()
   }
 
-  getItems = signal<any[]>(JSON.parse(localStorage.getItem('ProductsCart') || '[]'));
+  getDeleteItem(id: number) {
+    this.#cartService.deleteProduct(id)
+  }
 
-  getDeleteItem(index: any) {
-    return this.#cartService.deleteItem(index)
+  getBD() {
+    return this.#cartService.productsCart();
   }
 
   sucess() {

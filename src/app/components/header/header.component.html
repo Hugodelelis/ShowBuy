@@ -16,8 +16,8 @@
         </div>
       </div>
         <button class="btn cart" (click)="showModal()"><img src="assets/icons/icon-cart.svg" alt="car">
-          @if(getValueCart() >= 1)  {
-            <span class="alert-item">{{ getValueCart() }}</span>
+          @if(getCountItems() >= 1)  {
+            <span class="alert-item">{{ 1 }}</span>
           }
         </button>
     </nav>
@@ -29,23 +29,23 @@
           <button (click)="closeModal()" class="btn"><img src="assets/icons/close.svg" alt="close"></button>
         </div>
 
-        @if(getValueCart() === 0) {
+        @if(getCountItems() <= 0) {
           <div class="modal-empty">
             <span>{{ 'pages.modal.empty' | translate}}</span>
           </div>
-        } @if(getValueCart() >= 1) {
+        } @if(getCountItems() >= 1) {
           <div class="modal-body">
-            @for(item of getItems(); track item; let i = $index) {
+            @for(item of getBD(); track item; let i = $index) {
               <div class="product-container-cart">
-                <img [src]="item[i].img" [alt]="$index" class="thumb-modal-img">
+                <img [src]="item.img" [alt]="$index" class="thumb-modal-img">
                 <div class="product-infos">
-                  <span class="name-product">{{ item[i].name }}</span>
+                  <span class="name-product">{{ item.name }}</span>
                   <div class="price">
-                    <span>{{ item[i].quantity }}x</span>
-                    <span class="price-product">${{ item[i].price }}.00</span>
+                    <span>{{ item.quantity }}x</span>
+                    <span class="price-product">${{ item.price }}.00</span>
                   </div>
                 </div>
-                <button class="btn-delete" (click)="getDeleteItem(i)"><img src="assets/icons/icon-delete.svg" alt="button delete"></button>
+                <button class="btn-delete" (click)="getDeleteItem(item.id)"><img src="assets/icons/icon-delete.svg" alt="button delete"></button>
               </div>
               <button class="btn-primary btn-width" (click)="sucess()">{{ 'pages.modal.btn' | translate}}</button>
             }

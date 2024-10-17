@@ -31,24 +31,42 @@ export class ContentComponent {
     this.mainImage = newSrc;
   }
 
-  // counter
   #cartService = inject(ProductAddService)
 
-  getCount() {
-    return this.#cartService.count()
-  }
+  count = signal<number>(1)
+  currentCount = computed(() => this.count());
 
+  
   increment() {
-    this.#cartService.increment();
+    this.count.update(value => value + 1);
+    this.updateProductQuantity()
   }
 
   decrement() {
-    this.#cartService.decrement();
+    if(this.count() === 1) {
+      return this.count
+    }
+
+    this.count.update(value => value - 1);
+    return this.updateProductQuantity()
+  }
+
+  private updateProductQuantity() {
+    this.product.quantity = this.count();
+    this.product.price = this.count() * 125; 
   }
 
   //add product
 
+  product = {
+      id: 1,
+      name: 'limited shoes',
+      img: 'assets/imgs/image-product-1-thumbnail.jpg',
+      price: this.count()  * 125,
+      quantity: this.count()
+  };
+
   getAddProductToCart() {
-    this.#cartService.addProductToCart(this.#cartService.products());
+    this.#cartService.addProduct(this.product);
   }
 }
